@@ -1,0 +1,34 @@
+version: "3.5"
+services:
+  website:
+    build: .
+    expose:
+      - 80
+    environment:
+      SYMFONY_ENV: prod
+      SYMFONY_DATABASE_HOST: mysql.devops.hummingbirdtech.com
+      SYMFONY_DATABASE_PORT: "3306"
+      SYMFONY_DATABASE_NAME: hummingbird
+      SYMFONY_DATABASE_USER: hummingbird
+      SYMFONY_DATABASE_PASSWORD: hummingbird
+      HTTPD_SERVER_NAME: website.devops.hummingbirdtech.com
+    networks:
+      hb_develop:
+        aliases:
+          - website.devops.hummingbirdtech.com
+
+  mysql:
+    image: mysql:5.7.14
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: hummingbird
+      MYSQL_USER: hummingbird
+      MYSQL_PASSWORD: hummingbird
+    networks:
+      hb_develop:
+        aliases:
+          - mysql.devops.hummingbirdtech.com
+networks:
+  hb_develop:
+    name: hummingbird
+    driver: bridge
