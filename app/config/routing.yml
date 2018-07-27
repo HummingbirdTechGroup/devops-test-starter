@@ -1,0 +1,3 @@
+hummingbird:
+    resource: '@HummingbirdBundle/Controller/'
+    type: annotation

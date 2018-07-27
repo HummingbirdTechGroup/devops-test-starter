@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <h3>Farms:</h3>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Hectarage</th>
+                    <th>Region</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for farm in farms %}
+                    <tr>
+                        <td>{{ farm.name }}</td>
+                        <td>{{ farm.hectarage }}</td>
+                        <td>{{ farm.region }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body { margin: 50px !important; }
+    </style>
+{% endblock %}

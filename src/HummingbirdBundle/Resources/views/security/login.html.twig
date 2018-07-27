@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <form class="login" action="{{ path('login') }}" method="post">
+        <div class="row">
+            <div class="input-field col">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="_password" />
+            </div>
+        </div>
+        {% if error %}
+            <div class="row error center-align">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div class="row center-align">
+            <div class="input-field col">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Login
+                    <i class="material-icons right">vpn_key</i>
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .login { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+        .login .input-field { width: 300px; }
+        .login .error { color: indianred; }
+    </style>
+{% endblock %}
